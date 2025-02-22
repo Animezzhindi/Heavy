@@ -44,9 +44,8 @@ HELP_TEXT = """<b>⁉️ Hᴇʟʟᴏ {mention} ~
 ‣ /help -</b> Oᴘᴇɴ ᴛʜɪs ʜᴇʟᴘ ᴍᴇssᴀɢᴇ !</blockquote>
 <b><i>◈ Sᴛɪʟʟ ʜᴀᴠᴇ ᴅᴏᴜʙᴛs, ᴄᴏɴᴛᴀᴄᴛ ʙᴇʟᴏᴡ ᴘᴇʀsᴏɴs/ɢʀᴏᴜᴘ ᴀs ᴘᴇʀ ʏᴏᴜʀ ɴᴇᴇᴅ !</i></b>"""
 
-ABOUT_TXT = """<b>🤖 ᴍʏ ɴᴀᴍᴇ: {botname}
-<blockquote expandable>›› ᴏᴡɴᴇʀ: <a href='tg://openmessage?user_id=6830432475'>ᴀᴅʀ</a>
-›› ᴅᴇᴠᴇʟᴏᴘᴇʀ: <a href='https://t.me/imakashrabha'>ᴀᴋᴀsʜ</a></b></blockquote>"""
+ABOUT_TXT = """<b> ᴍʏ ɴᴀᴍᴇ: {botname}
+<blockquote expandable>◈ ᴏᴡɴᴇʀ: <a href='tg://openmessage?user_id=7932127170'>ʟᴜғғʏ</a></b></blockquote>"""
 
 SETTING_TXT = """<b>⚙️ Cᴏɴғɪɢᴜʀᴀᴛɪᴏɴs</b>
 <blockquote expandable>◈ ᴛᴏᴛᴀʟ ғᴏʀᴄᴇ sᴜʙ ᴄʜᴀɴɴᴇʟ:  <b>{total_fsub}</b>
