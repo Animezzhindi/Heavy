@@ -45,7 +45,7 @@ HELP_TEXT = """<b>⁉️ Hᴇʟʟᴏ {mention} ~
 <b><i>◈ Sᴛɪʟʟ ʜᴀᴠᴇ ᴅᴏᴜʙᴛs, ᴄᴏɴᴛᴀᴄᴛ ʙᴇʟᴏᴡ ᴘᴇʀsᴏɴs/ɢʀᴏᴜᴘ ᴀs ᴘᴇʀ ʏᴏᴜʀ ɴᴇᴇᴅ !</i></b>"""
 
 ABOUT_TXT = """<b> ᴍʏ ɴᴀᴍᴇ: {botname}
-<blockquote expandable>◈ ᴏᴡɴᴇʀ: <a href='tg://openmessage?user_id=7932127170'>𝗜̸𝘀̸𝘀̸ᴇɪ</a></b></blockquote>"""
+<blockquote expandable>◈ ᴏᴡɴᴇʀ: <a href='tg://openmessage?user_id=7932127170'>ɪssᴇɪ</a></b></blockquote>"""
 
 SETTING_TXT = """<b>⚙️ Cᴏɴғɪɢᴜʀᴀᴛɪᴏɴs</b>
 <blockquote expandable>◈ ᴛᴏᴛᴀʟ ғᴏʀᴄᴇ sᴜʙ ᴄʜᴀɴɴᴇʟ:  <b>{total_fsub}</b>
