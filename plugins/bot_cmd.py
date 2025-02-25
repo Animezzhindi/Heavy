@@ -172,7 +172,7 @@ async def help(client: Client, message: Message):
     buttons = [
         [
             InlineKeyboardButton("😎 Oᴡɴᴇʀ", url=f"tg://openmessage?user_id=7932127170")
-            
+        ]   
     ]
     if SUPPORT_GROUP:
         buttons.insert(0, [InlineKeyboardButton("🌐 Sᴜᴘᴘᴏʀᴛ Cʜᴀᴛ Gʀᴏᴜᴘ", url=SUPPORT_GROUP)])
