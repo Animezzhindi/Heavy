@@ -22,7 +22,7 @@ CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002070366722"))
 OWNER_ID = int(os.environ.get("OWNER_ID", "7932127170"))
 
 #SUPPORT_GROUP: This is used for normal users for getting help if they don't understand how to use the bot --⚠ OPTIONAL--
-SUPPORT_GROUP = os.environ.get("SUPPORT_GROUP", "https://t.me/Anime_Community_India_Chats")
+SUPPORT_GROUP = os.environ.get("SUPPORT_GROUP", "https://t.me/+IR4biHlMsohmMzQ1")
 
 #Port
 PORT = os.environ.get("PORT", "8080")
