@@ -171,7 +171,7 @@ HELP = "https://graph.org//file/10f310dd6a7cb56ad7c0b.jpg"
 async def help(client: Client, message: Message):
     buttons = [
         [
-            InlineKeyboardButton("😎 Oᴡɴᴇʀ", url=f"tg://openmessage?user_id=7932127170")
+            InlineKeyboardButton("😎 Oᴡɴᴇʀ", url=f"tg://openmessage?user_id=6419671110")
         ]   
     ]
     if SUPPORT_GROUP:
