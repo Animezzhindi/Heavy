@@ -144,9 +144,18 @@ async def not_joined(client: Client, message: Message):
             buttons.extend([chat_button for chat_id, chat_button in client.REQ_FSUB_BUTTONS['request'].items() if not await kingdb.reqSent_user_exist(chat_id, user_id)])
                                              
         try:
-            buttons.append([InlineKeyboardButton(text='♻️ Tʀʏ Aɢᴀɪɴ', url=f"https://t.me/{client.username}?start={message.command[1]}")])
-        except IndexError:
-            pass
+    buttons.append([
+        InlineKeyboardButton(
+            text='𝖬𝗈𝗋𝖾 𝖠𝗇𝗂𝗆𝖾𝗌',
+            url="https://t.me/addlist/OGfOBcycFHc0Njc1"  # Replace with actual channel link
+        ),
+        InlineKeyboardButton(
+            text='♻️ Tʀʏ Aɢᴀɪɴ',
+            url=f'https://t.me/{client.username}?start={message.command[1]}'
+        )
+    ])
+except IndexError:
+    pass
                      
         await temp.edit(  
             text=FORCE_MSG.format(
