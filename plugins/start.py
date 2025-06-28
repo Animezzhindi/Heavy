@@ -127,37 +127,34 @@ async def start_command(client: Client, message: Message):
 
 ##===================================================================================================================##   
 
-
 @Bot.on_message(filters.command('start') & filters.private & ~banUser)
 async def not_joined(client: Client, message: Message):
     temp = await message.reply(f"<i><b>Cʜᴇᴄᴋɪɴɢ...</b></i>")
-    
+
     try:
         if not client.REQFSUB:
             buttons = client.FSUB_BUTTONS[:]
-
         else:
             user_id = message.from_user.id
-
             buttons = client.REQ_FSUB_BUTTONS['normal'][:]
 
-            buttons.extend([chat_button for chat_id, chat_button in client.REQ_FSUB_BUTTONS['request'].items() if not await kingdb.reqSent_user_exist(chat_id, user_id)])
-                                             
-        try:
-            buttons.append([
-                InlineKeyboardButton(
-                    text='𝖬𝗈𝗋𝖾 𝖠𝗇𝗂𝗆𝖾𝗌',
-                    url="https://t.me/addlist/OGfOBcycFHc0Njc1"  # Replace with actual channel link
-                ),
-                InlineKeyboardButton(
-                    text='♻️ Tʀʏ Aɢᴀɪɴ',
-                    url=f'https://t.me/{client.username}?start={message.command[1]}'
-                )
+            buttons.extend([
+                chat_button for chat_id, chat_button in client.REQ_FSUB_BUTTONS['request'].items()
+                if not await kingdb.reqSent_user_exist(chat_id, user_id)
             ])
-        except IndexError:
-            pass
-                     
-        await temp.edit(  
+
+        buttons.append([
+            InlineKeyboardButton(
+                text='𝖬𝗈𝗋𝖾 𝖠𝗇𝗂𝗆𝖾𝗌',
+                url="https://t.me/addlist/OGfOBcycFHc0Njc1"
+            ),
+            InlineKeyboardButton(
+                text='♻️ Tʀʏ Aɢᴀɪɴ',
+                url=f'https://t.me/{client.username}?start={message.command[1]}'
+            )
+        ])
+
+        await temp.edit(
             text=FORCE_MSG.format(
                 first=message.from_user.first_name,
                 last=message.from_user.last_name,
@@ -167,15 +164,18 @@ async def not_joined(client: Client, message: Message):
             ),
             reply_markup=InlineKeyboardMarkup(buttons)
         )
-                
-        try: await message.delete()
-        except: pass
-                        
+
+        try:
+            await message.delete()
+        except:
+            pass
+
     except Exception as e:
         print(f"Unable to perform forcesub buttons reason : {e}")
-        return await temp.edit(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @imakashrabha</i>\n<blockquote expandable>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
-
-
+        return await temp.edit(
+            f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @imakashrabha</i>\n"
+            f"<blockquote expandable>Rᴇᴀsᴏɴ:</b> {e}</blockquote>"
+        )
 
 #=====================================================================================##
 #......... RESTART COMMAND FOR RESTARTING BOT .......#
