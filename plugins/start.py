@@ -129,13 +129,14 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command('start') & filters.private & ~banUser)
 async def not_joined(client: Client, message: Message):
-    temp = await message.reply(f"<i><b>Cʜᴇᴄᴋɪɴɢ...</b></i>")
-
+    temp = await message.reply("<i><b>Cʜᴇᴄᴋɪɴɢ...</b></i>")
+    
     try:
         if not client.REQFSUB:
             buttons = client.FSUB_BUTTONS[:]
         else:
             user_id = message.from_user.id
+
             buttons = client.REQ_FSUB_BUTTONS['normal'][:]
 
             buttons.extend([
@@ -143,16 +144,19 @@ async def not_joined(client: Client, message: Message):
                 if not await kingdb.reqSent_user_exist(chat_id, user_id)
             ])
 
-        buttons.append([
-            InlineKeyboardButton(
-                text='𝖬𝗈𝗋𝖾 𝖠𝗇𝗂𝗆𝖾𝗌',
-                url="https://t.me/addlist/OGfOBcycFHc0Njc1"
-            ),
-            InlineKeyboardButton(
+        try:
+            # Add Update (URL) button
+            update_button = [InlineKeyboardButton(text='𝖬𝗈𝗋𝖾 𝖠𝗇𝗂𝗆𝖾𝗌', url='https://t.me/addlist/OGfOBcycFHc0Njc1')]
+            # Add Try Again button
+            try_again_button = [InlineKeyboardButton(
                 text='♻️ Tʀʏ Aɢᴀɪɴ',
-                url=f'https://t.me/{client.username}?start={message.command[1]}'
-            )
-        ])
+                url=f"https://t.me/{client.username}?start={message.command[1]}"
+            )]
+            # Append both buttons
+            buttons.append(update_button)
+            buttons.append(try_again_button)
+        except IndexError:
+            pass
 
         await temp.edit(
             text=FORCE_MSG.format(
@@ -175,7 +179,7 @@ async def not_joined(client: Client, message: Message):
         return await temp.edit(
             f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @imakashrabha</i>\n"
             f"<blockquote expandable>Rᴇᴀsᴏɴ:</b> {e}</blockquote>"
-        )
+	)
 
 #=====================================================================================##
 #......... RESTART COMMAND FOR RESTARTING BOT .......#
