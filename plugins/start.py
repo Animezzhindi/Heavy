@@ -146,7 +146,7 @@ async def not_joined(client: Client, message: Message):
 
         try:
             # Add Update (URL) button
-            update_button = [InlineKeyboardButton(text='𝖬𝗈𝗋𝖾 𝖠𝗇𝗂𝗆𝖾𝗌', url='https://t.me/addlist/OGfOBcycFHc0Njc1')]
+            update_button = [InlineKeyboardButton(text='𝖬𝗈𝗋𝖾 𝖠𝗇𝗂𝗆𝖾𝗌', url='https://t.me/addlist/DjJrbINkoyIzYzE1')]
             # Add Try Again button
             try_again_button = [InlineKeyboardButton(
                 text='♻️ Tʀʏ Aɢᴀɪɴ',
