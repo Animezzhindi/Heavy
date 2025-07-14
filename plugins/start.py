@@ -1,5 +1,3 @@
-# +++ Made By King [telegram username: @Shidoteshika1] +++
-
 import os
 import sys
 import random
@@ -103,7 +101,7 @@ async def start_command(client: Client, message: Message):
                 asyncio.create_task(auto_del_notification(client.username, last_message, DEL_TIMER, message.command[1]))
                         
     else:   
-        reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton('🤖 Aʙᴏᴜᴛ ᴍᴇ', callback_data= 'about'), InlineKeyboardButton('Sᴇᴛᴛɪɴɢs ⚙️', callback_data='setting')]])
+        reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton('ᴀʙᴏᴜᴛ', callback_data= 'about'), InlineKeyboardButton('sᴇᴛᴛɪɴɢs', callback_data='setting')]])
 
         await message.reply_photo(
             photo = random.choice(PICS),
@@ -127,38 +125,28 @@ async def start_command(client: Client, message: Message):
 
 ##===================================================================================================================##   
 
+
 @Bot.on_message(filters.command('start') & filters.private & ~banUser)
 async def not_joined(client: Client, message: Message):
-    temp = await message.reply("<i><b>Cʜᴇᴄᴋɪɴɢ...</b></i>")
+    temp = await message.reply(f"<i><b>Cʜᴇᴄᴋɪɴɢ...</b></i>")
     
     try:
         if not client.REQFSUB:
             buttons = client.FSUB_BUTTONS[:]
+
         else:
             user_id = message.from_user.id
 
             buttons = client.REQ_FSUB_BUTTONS['normal'][:]
 
-            buttons.extend([
-                chat_button for chat_id, chat_button in client.REQ_FSUB_BUTTONS['request'].items()
-                if not await kingdb.reqSent_user_exist(chat_id, user_id)
-            ])
-
+            buttons.extend([chat_button for chat_id, chat_button in client.REQ_FSUB_BUTTONS['request'].items() if not await kingdb.reqSent_user_exist(chat_id, user_id)])
+                                             
         try:
-            # Add Update (URL) button
-            update_button = [InlineKeyboardButton(text='𝖬𝗈𝗋𝖾 𝖠𝗇𝗂𝗆𝖾𝗌', url='https://t.me/addlist/DjJrbINkoyIzYzE1')]
-            # Add Try Again button
-            try_again_button = [InlineKeyboardButton(
-                text='♻️ Tʀʏ Aɢᴀɪɴ',
-                url=f"https://t.me/{client.username}?start={message.command[1]}"
-            )]
-            # Append both buttons
-            buttons.append(update_button)
-            buttons.append(try_again_button)
+            buttons.append([InlineKeyboardButton(text='♻️ Tʀʏ Aɢᴀɪɴ', url=f"https://t.me/{client.username}?start={message.command[1]}")])
         except IndexError:
             pass
-
-        await temp.edit(
+                     
+        await temp.edit(  
             text=FORCE_MSG.format(
                 first=message.from_user.first_name,
                 last=message.from_user.last_name,
@@ -168,18 +156,15 @@ async def not_joined(client: Client, message: Message):
             ),
             reply_markup=InlineKeyboardMarkup(buttons)
         )
-
-        try:
-            await message.delete()
-        except:
-            pass
-
+                
+        try: await message.delete()
+        except: pass
+                        
     except Exception as e:
         print(f"Unable to perform forcesub buttons reason : {e}")
-        return await temp.edit(
-            f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @imakashrabha</i>\n"
-            f"<blockquote expandable>Rᴇᴀsᴏɴ:</b> {e}</blockquote>"
-	)
+        return await temp.edit(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @imakashrabha</i>\n<blockquote expandable>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
+
+
 
 #=====================================================================================##
 #......... RESTART COMMAND FOR RESTARTING BOT .......#
