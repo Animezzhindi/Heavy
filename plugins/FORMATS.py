@@ -7,9 +7,10 @@ files_cmd_pic = "https://telegra.ph/file/d44f46054250a73053614.jpg"
 autodel_cmd_pic = "https://telegra.ph/file/a64533814021b40057ccd.jpg"
 
 #start message
-START_MSG = """<b>›› Hᴇʏ {mention} ~
+START_MSG = """<b>⚡️ Hᴇʏ {mention} ~
 
-<blockquote expandable> ɪ ᴀᴍ ғɪʟᴇ sᴛᴏʀᴇ ʙᴏᴛ, ɪ ᴄᴀɴ sᴛᴏʀᴇ ᴘʀɪᴠᴀᴛᴇ ғɪʟᴇs ɪɴ sᴘᴇᴄɪғɪᴇᴅ ᴄʜᴀɴɴᴇʟ ᴀɴᴅ ᴏᴛʜᴇʀ ᴜsᴇʀs ᴄᴀɴ ᴀᴄᴄᴇss ɪᴛ ғʀᴏᴍ sᴘᴇᴄɪᴀʟ ʟɪɴᴋ.</blockquote></b>"""
+<blockquote expandable>  ɪ ᴀᴍ ᴀɴ ᴀᴅᴠᴀɴᴄᴇ ғɪʟᴇ sʜᴀʀᴇ ʙᴏᴛ.
+ɪᴍ ᴏɴʟʏ ғᴏʀ ᴜsᴇ ᴀɴɪᴍᴇ ᴄᴏᴍᴍᴜɴɪᴛʏ ɪɴᴅɪᴀ.</blockquote></b>"""
 
 #Force sub message 
 FORCE_MSG = """<b><blockquote>›› Hᴇʏ {mention} ×
