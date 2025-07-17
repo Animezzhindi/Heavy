@@ -1,0 +1,8 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"        # Specifies the Python ecosystem
+    directory: "/"                   # The directory where requirements.txt is located (root)
+    schedule:
+      interval: "monthly"            # Check for updates once a month
+    ignore:                          # Ignore all updates
+      - dependency-name: "*"         # Ignores updates for all dependencies
