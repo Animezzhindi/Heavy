@@ -70,11 +70,6 @@ class Bot(Client):
 
     async def update_chat_ids(self):
         chat_ids = await kingdb.get_all_channels()
-        abs_fsub = await kingdb.abstract_force_sub()
-        abs_id = abs_link = None
-
-        if abs_fsub and (abs_id:= abs_fsub[0]) and (abs_link:= abs_fsub[1]):
-            chat_ids.append(abs_id)
 
         if not chat_ids:
             self.CHANNEL_LIST.clear()
@@ -87,27 +82,16 @@ class Bot(Client):
         valid_chat_ids, global_buttons, chnl_buttons, req_chnl_buttons = [], [], [], {}
         channel_infos = []
 
-        for idx, chat_id in enumerate(chat_ids, start=1):
+        for chat_id in chat_ids:
             try:
-                url = abs_id_info = folder_link_info = ""
-                
                 data = await self.get_chat(chat_id)
                 channel_link = data.invite_link 
                 channel_name = data.title
-                
-                serial_name = f"Jᴏɪɴ ᴄʜᴀɴɴᴇʟ {idx}"
 
                 if not channel_link:
                     channel_link = await self.export_chat_invite_link(chat_id)
-                
-                
-                if abs_id == chat_id:
-                    abs_id_info = "HIDE FSUB "
-                    folder_link_info = f"\n• FOLDER LINK: <a href='{abs_link}'>Click here to see</a>"
-                    url = abs_link
-                    data.username = True
-                
-                temp_butn = [InlineKeyboardButton(text=serial_name, url=url or channel_link)]
+
+                temp_butn = [InlineKeyboardButton(text=channel_name, url=channel_link)]
 
                 if not data.username:
                     await kingdb.add_reqChannel(chat_id)
@@ -117,20 +101,20 @@ class Bot(Client):
                         req_channel_link = (await self.create_chat_invite_link(chat_id=chat_id, creates_join_request=True)).invite_link
                         await kingdb.store_reqLink(chat_id, req_channel_link)
 
-                    req_chnl_buttons[chat_id] = [InlineKeyboardButton(text=serial_name, url=req_channel_link)]
+                    req_chnl_buttons[chat_id] = [InlineKeyboardButton(text=channel_name, url=req_channel_link)]
 
                 else:
                     chnl_buttons.append(temp_butn)
 
                 global_buttons.append(temp_butn)
 
-                channel_infos.append(f"<b><blockquote>• {abs_id_info}ID: <code>{chat_id}</code>\n• NAME: <a href = {channel_link}>{channel_name}</a>{folder_link_info}</blockquote></b>\n")
+                channel_infos.append(f"<b><blockquote>NAME: <a href = {channel_link}>{channel_name}</a>\n(ID: <code>{chat_id}</code>)</blockquote></b>\n\n")
 
                 valid_chat_ids.append(chat_id)
-
+                    
             except Exception as e:
                 print(f"Unable to update the {chat_id}, Reason: {e}")
-                channel_infos.append(f"<blockquote expandable><b>{abs_id_info}ID: <code>{chat_id}</code>\n<i>! Eʀʀᴏʀ ᴏᴄᴄᴜʀᴇᴅ ᴡʜɪʟᴇ ᴜᴘᴅᴀᴛɪɴɢ...</i>\n\nRᴇᴀsᴏɴ:</b> {e}</blockquote>\n")
+                channel_infos.append(f"<blockquote expandable><b>ID: <code>{chat_id}</code>\n<i>! Eʀʀᴏʀ ᴏᴄᴄᴜʀᴇᴅ ᴡʜɪʟᴇ ᴜᴘᴅᴀᴛɪɴɢ...</i>\n\nRᴇᴀsᴏɴ:</b> {e}</blockquote>\n\n")
                 
                 continue
         
@@ -146,7 +130,7 @@ class Bot(Client):
 
         return ''.join(channel_infos)
     
-
+              
     async def stop(self, *args):
         await super().stop()
         self.LOGGER(__name__).info(f"{self.name} Bot stopped.")
