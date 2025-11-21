@@ -103,7 +103,10 @@ async def start_command(client: Client, message: Message):
     else:   
         reply_markup = InlineKeyboardMarkup(
     [
-        [InlineKeyboardButton("Main Channel", url="https://t.me/Hindi_Sub_Donghua")]
+        [
+            InlineKeyboardButton("Channel", url="https://t.me/Hindi_Sub_Donghua"),
+            InlineKeyboardButton("Group", url="https://t.me/Donghuas_Discussion")
+        ]
     ]
 		)
         await message.reply_photo(
