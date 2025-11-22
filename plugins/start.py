@@ -104,8 +104,8 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("Channel", url="https://t.me/Hindi_Sub_Donghua"),
-            InlineKeyboardButton("Group", url="https://t.me/Donghuas_Discussion")
+            InlineKeyboardButton("🍁 Channel", url="https://t.me/Hindi_Sub_Donghua"),
+            InlineKeyboardButton("♨️ Group", url="https://t.me/Donghuas_Discussion")
         ]
     ]
 		)
@@ -170,7 +170,7 @@ async def not_joined(client: Client, message: Message):
                         
     except Exception as e:
         print(f"Unable to perform forcesub buttons reason : {e}")
-        return await temp.edit(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @imakashrabha</i>\n<blockquote expandable>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
+        return await temp.edit(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Heaven_Emperor</i>\n<blockquote expandable>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
 
 
 
@@ -189,7 +189,7 @@ async def restart_bot(client: Client, message: Message):
         os.execl(sys.executable, *args)
     except Exception as e:
         print(f"Error occured while Restarting the bot: {e}")
-        return await msg.edit_text(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @imakashrabha</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
+        return await msg.edit_text(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Heaven_Emperor</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
     # Optionally, you can add cleanup tasks here
     #subprocess.Popen([sys.executable, "main.py"])  # Adjust this if your start file is named differently
     #sys.exit()
