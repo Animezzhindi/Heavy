@@ -225,7 +225,7 @@ HELP = "https://graph.org//file/10f310dd6a7cb56ad7c0b.jpg"
 async def help(client: Client, message: Message):
     buttons = [
         [
-            InlineKeyboardButton("Oᴡɴᴇʀ", url=f"tg://openmessage?user_id=6165669080")
+            InlineKeyboardButton("Oᴡɴᴇʀ", url=f"tg://openmessage?user_id=7899483911")
         ]
     ]
     if SUPPORT_GROUP:
@@ -246,5 +246,5 @@ async def help(client: Client, message: Message):
             message_effect_id = 5046509860389126442 #🎉
         )
     except Exception as e:
-        return await message.reply(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Shidoteshika1</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
+        return await message.reply(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Heaven_Emperor</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
    
