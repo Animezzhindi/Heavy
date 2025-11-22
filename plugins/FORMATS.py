@@ -11,7 +11,6 @@ START_MSG = """<b>⚡️ Hᴇʏ {mention} ○
 
 <blockquote expandable> ɪ ᴀᴍ ʟᴀᴛᴇꜱᴛ ᴀᴅᴠᴀɴᴄᴇ ꜰɪʟᴇ ꜱᴛᴏʀᴇ ʙᴏᴛ.
 ᴏɴʟʏ ғᴏʀ ᴜsᴇ ʜɪɴᴅɪ sᴜʙ ᴅᴏɴɢʜᴜᴀ.</blockquote></b>"""
-
 #Force sub message 
 FORCE_MSG = """<b><blockquote>›› Hᴇʏ {mention} ×</blockquote>
       ʏᴏᴜʀ ғɪʟᴇ ɪs ʀᴇᴀᴅʏ ‼️ ʟᴏᴏᴋs ʟɪᴋᴇ ʏᴏᴜ ʜᴀᴠᴇɴ'ᴛ ᴊᴏɪɴ ᴛᴏ ᴏᴜʀ ᴄʜᴀɴɴᴇʟs ʏᴇᴛ, ᴊᴏɪɴ ɴᴏᴡ ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ғɪʟᴇs.</b>"""
