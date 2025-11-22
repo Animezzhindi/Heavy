@@ -7,9 +7,10 @@ files_cmd_pic = "https://telegra.ph/file/d44f46054250a73053614.jpg"
 autodel_cmd_pic = "https://telegra.ph/file/a64533814021b40057ccd.jpg"
 
 #start message
-START_MSG = """<b>›› Hᴇʏ {mention} ~
+START_MSG = """<b>⚡️ Hᴇʏ {mention} ○
 
-<blockquote expandable> ɪ ᴀᴍ ғɪʟᴇ sᴛᴏʀᴇ ʙᴏᴛ, ɪ ᴄᴀɴ sᴛᴏʀᴇ ᴘʀɪᴠᴀᴛᴇ ғɪʟᴇs ɪɴ sᴘᴇᴄɪғɪᴇᴅ ᴄʜᴀɴɴᴇʟ ᴀɴᴅ ᴏᴛʜᴇʀ ᴜsᴇʀs ᴄᴀɴ ᴀᴄᴄᴇss ɪᴛ ғʀᴏᴍ sᴘᴇᴄɪᴀʟ ʟɪɴᴋ.</blockquote></b>"""
+<blockquote expandable> ɪ ᴀᴍ ʟᴀᴛᴇꜱᴛ ᴀᴅᴠᴀɴᴄᴇ ꜰɪʟᴇ ꜱᴛᴏʀᴇ ʙᴏᴛ.
+ᴏɴʟʏ ғᴏʀ ᴜsᴇ ʜɪɴᴅɪ sᴜʙ ᴅᴏɴɢʜᴜᴀ.</blockquote></b>"""
 
 #Force sub message 
 FORCE_MSG = """<b><blockquote>›› Hᴇʏ {mention} ×</blockquote>
@@ -41,7 +42,7 @@ HELP_TEXT = """<b>⁉️ Hᴇʟʟᴏ {mention} ~
 <b><i>◈ Sᴛɪʟʟ ʜᴀᴠᴇ ᴅᴏᴜʙᴛs, ᴄᴏɴᴛᴀᴄᴛ ʙᴇʟᴏᴡ ᴘᴇʀsᴏɴs/ɢʀᴏᴜᴘ ᴀs ᴘᴇʀ ʏᴏᴜʀ ɴᴇᴇᴅ !</i></b>"""
 
 ABOUT_TXT = """<b>🤖 ᴍʏ ɴᴀᴍᴇ: {botname}
-<blockquote expandable>›› ᴏᴡɴᴇʀ: <a href='tg://openmessage?user_id=6419671110'>Lᴜғғʏ</a></blockquote>"""
+<blockquote expandable>›› ᴏᴡɴᴇʀ: <a href='tg://openmessage?user_id=7899483911'>Hᴜᴀɴɢ.</a></blockquote>"""
 
 SETTING_TXT = """<b>⚙️ Cᴏɴғɪɢᴜʀᴀᴛɪᴏɴs</b>
 <blockquote expandable>◈ ᴛᴏᴛᴀʟ ғᴏʀᴄᴇ sᴜʙ ᴄʜᴀɴɴᴇʟ:  <b>{total_fsub}</b>
