@@ -458,75 +458,100 @@ async def add_chat_cmd(client: Bot, message: Message):
     wait_msg = await message.reply("<b><i>Pʀᴏᴄᴇssɪɴɢ....</i></b>", quote=True)
     try:
         if not (
-            matched := (re.fullmatch(
+            matched := re.fullmatch(
                 fr"^/{hidefsub_cmd}\s+("
                 r"(?P<delete>delete)|"
                 r"(?P<chat_id>-100\d{10})|"
                 r"(?P<folder_link>https://t\.me/addlist/(.+?))|"
                 r"((?P<chat_id_1>-100\d{10})\s+(?P<folder_link_1>https://t\.me/addlist/\S+))"
                 r")\s*$",
-                message.text, 
-                re.I|re.M
-            ))
+                message.text,
+                re.I | re.M
+            )
         ):
             return await wait_msg.edit(
                 "<b>❌ Iɴᴠᴀʟɪᴅ ᴜsᴇ ᴏғ ᴄᴏᴍᴍᴀɴᴅ!!\n\n"
                 "ᴠᴀʟɪᴅ ᴇxᴀᴍᴘʟᴇ:<blockquote>"
-                f"➪ <code>/{hidefsub_cmd} -1001234567890 telegram_folder_link</code> : ᴛᴏ ᴀᴅᴅ ʙᴏᴛʜ ɪᴅ ᴀɴᴅ ʟɪɴᴋ\n\n"
-                f"➪ <code>/{hidefsub_cmd} -1001234567890</code> : ᴛᴏ ᴀᴅᴅ ᴏʀ ᴜᴘᴅᴀᴛᴇ ɪᴅ ᴏɴʟʏ\n\n"
-                f"➪ <code>/{hidefsub_cmd} telegram_folder_link</code> : ᴛᴏ ᴀᴅᴅ ᴏʀ ᴜᴘᴅᴀᴛᴇ ʟɪɴᴋ ᴏɴʟʏ\n\n"
-                f"➪ <code>/{hidefsub_cmd} delete</code> : ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴅᴀᴛᴀ</blockquote></b>",
+                f"➪ <code>/{hidefsub_cmd} -1001234567890 telegram_folder_link</code>\n\n"
+                f"➪ <code>/{hidefsub_cmd} -1001234567890</code>\n\n"
+                f"➪ <code>/{hidefsub_cmd} telegram_folder_link</code>\n\n"
+                f"➪ <code>/{hidefsub_cmd} delete</code></blockquote></b>",
                 reply_markup=CLOSE_MARKUP
             )
 
         matched_dict = matched.groupdict()
+
         try:
             abs_chat_id, abs_folder_link = await kingdb.abstract_force_sub()
         except TypeError:
             abs_chat_id = abs_folder_link = None
 
+        # ---------------- DELETE MODE ----------------
         if matched_dict["delete"]:
             result = "⚠️ Nᴏ ᴅᴀᴛᴀ ᴀᴠᴀɪʟᴀʙʟᴇ ᴛᴏ ᴅᴇʟᴇᴛᴇ!!"
 
             if abs_chat_id or abs_folder_link:
-                result = (
-                    f"{'✅ DELETED SUCCESSFULLY' if await kingdb.abstract_force_sub(delete=True) else '❌ FAILED TO DELETE'}\n\n"
-                    f"<blockquote>{f'HIDE-FSUB-LINK-ID: <code>{abs_chat_id}</code>\n' if abs_chat_id else ''}"
-                    f"{f'FOLDER-LINK: {abs_folder_link}' if abs_folder_link else ''}</blockquote></b>"
+                block_text = ""
+                if abs_chat_id:
+                    block_text += f"HIDE-FSUB-LINK-ID: <code>{abs_chat_id}</code>"
+                if abs_chat_id and abs_folder_link:
+                    block_text += "\n"
+                if abs_folder_link:
+                    block_text += f"FOLDER-LINK: {abs_folder_link}"
+
+                status = (
+                    "✅ DELETED SUCCESSFULLY"
+                    if await kingdb.abstract_force_sub(delete=True)
+                    else "❌ FAILED TO DELETE"
                 )
 
+                result = f"{status}\n\n<blockquote>{block_text}</blockquote>"
+
+        # ---------------- ADD / UPDATE MODE ----------------
         else:
             recevied_id = matched_dict["chat_id"] or matched_dict["chat_id_1"]
-            if recevied_id: recevied_id = int(recevied_id)
+            recevied_id = int(recevied_id) if recevied_id else None
             recevied_folder_link = matched_dict["folder_link"] or matched_dict["folder_link_1"]
 
             async def validate_and_update() -> bool:
                 if recevied_id:
-                    if await kingdb.channel_exist(recevied_id): return False
+                    if await kingdb.channel_exist(recevied_id):
+                        return False
+                    try:
+                        await client.get_chat(recevied_id)
+                    except:
+                        return False
 
-                    try: _ = await client.get_chat(recevied_id)
-                    except: return False
+                return await kingdb.abstract_force_sub(
+                    recevied_id, recevied_folder_link, update=True
+                )
 
-                if not await kingdb.abstract_force_sub(recevied_id, recevied_folder_link, update=True):
-                    return False
+            block_text = ""
+            if recevied_id:
+                block_text += f"HIDE-FSUB-LINK-ID: <code>{recevied_id}</code>"
+            if recevied_id and recevied_folder_link:
+                block_text += "\n"
+            if recevied_folder_link:
+                block_text += f"FOLDER-LINK: {recevied_folder_link}"
 
-                return True
-            
-            result = (
-                f"{'✅ ADDED/UPDATED SUCCESSFULLY' if await validate_and_update() else '❌ FAILED TO ADD/UPDATE'}\n\n"
-                f"<blockquote>"
-                f"{'HIDE-FSUB-LINK-ID: <code>' + str(recevied_id) + '</code>' if recevied_id else ''}"
-                f"{'\n' if recevied_id and recevied_folder_link else ''}"
-                f"{'FOLDER-LINK: ' + str(recevied_folder_link) if recevied_folder_link else ''}"
-                f"</blockquote></b>"
+            status = (
+                "✅ ADDED/UPDATED SUCCESSFULLY"
+                if await validate_and_update()
+                else "❌ FAILED TO ADD/UPDATE"
             )
+
+            result = f"{status}\n\n<blockquote>{block_text}</blockquote>"
+
         await client.update_chat_ids()
+
         return await wait_msg.edit(
-            text=f"<b>{result}</b>", 
-            disable_web_page_preview=True, 
+            text=f"<b>{result}</b>",
+            disable_web_page_preview=True,
             reply_markup=CLOSE_MARKUP
         )
 
     except Exception as e:
-        await wait_msg.edit(f"<b>-- ERROR --</b>\n<blockquote>{e}</blockquote>", reply_markup=CLOSE_MARKUP)
-    
+        await wait_msg.edit(
+            f"<b>-- ERROR --</b>\n<blockquote>{e}</blockquote>",
+            reply_markup=CLOSE_MARKUP
+        )
