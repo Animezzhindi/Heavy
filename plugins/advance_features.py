@@ -514,9 +514,12 @@ async def add_chat_cmd(client: Bot, message: Message):
             
             result = (
                 f"{'✅ ADDED/UPDATED SUCCESSFULLY' if await validate_and_update() else '❌ FAILED TO ADD/UPDATE'}\n\n"
-                f"<blockquote>{('HIDE-FSUB-LINK-ID: <code>' + str(recevied_id) + '</code>\n') if recevied_id else ''}"
-                f"{f'FOLDER-LINK: {recevied_folder_link}' if recevied_folder_link else ''}</blockquote></b>")
-
+                f"<blockquote>"
+                f"{'HIDE-FSUB-LINK-ID: <code>' + str(recevied_id) + '</code>' if recevied_id else ''}"
+                f"{'\n' if recevied_id and recevied_folder_link else ''}"
+                f"{'FOLDER-LINK: ' + str(recevied_folder_link) if recevied_folder_link else ''}"
+                f"</blockquote></b>"
+            )
         await client.update_chat_ids()
         return await wait_msg.edit(
             text=f"<b>{result}</b>", 
